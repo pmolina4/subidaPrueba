@@ -1,0 +1,131 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>LOGIN</title>
+	<link rel="stylesheet" href="../static/style/css/loginn.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+		integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
+		integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+</head>
+<!--Coded with love by Mutiullah Samim-->
+
+<body>
+	<div class="container h-100">
+		<div class="d-flex justify-content-center h-100">
+			<div class="user_card">
+				<div class="d-flex justify-content-center">
+					<div class="brand_logo_container">
+						<img src="../static/style/img/logo.png"
+							class="brand_logo" alt="Logo">
+					</div>
+				</div>
+				<div class="d-flex justify-content-center form_container">
+					<form action="/create_usuario" method="post" id="createUser">
+						<div class="input-group mb-3">
+							<div class="input-group-append">
+								<span class="input-group-text"><i class="fas fa-user"></i></span>
+							</div>
+							<input type="text" name="usuario" id="usuario_input" class="form-control input_user" value=""
+								placeholder="Usuario">
+						</div>
+						<div class="input-group mb-3">
+							<div class="input-group-append">
+								<span class="input-group-text"><i class="fas fa-user"></i></span>
+							</div>
+							<input type="email" name="correo" id="correo_input" class="form-control input_user" value=""
+								placeholder="Correo">
+						</div>
+						<div class="input-group mb-2">
+							<div class="input-group-append">
+								<span class="input-group-text"><i class="fas fa-key"></i></span>
+							</div>
+							<input type="password" name="contrasena" id="contrasena_input" class="form-control input_pass" value=""
+								placeholder="Contrasena" required>
+						</div>
+
+						<div class="d-flex justify-content-center mt-3 login_container">
+							<button type="submit" name="button" class="btn login_btn">Registrar</button>
+						</div>
+					</form>
+				</div>
+
+				<div class="mt-4">
+					<div class="d-flex justify-content-center links">
+						Ya tienes cuenta ? <a href="/" class="ml-2">Inciar Sesión</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<script>
+		const form = document.querySelector('#createUser');
+		const usuario_input = document.querySelector('#usuario_input');
+		const correo_input = document.querySelector('#correo_input');
+		const contrasena_input = document.querySelector('#contrasena_input');
+	
+		function onSubmitClicked(event) {
+		  // Detener la acción por defecto del formulario
+		  event.preventDefault();
+	
+		  // Verificar si los valores de entrada son válidos
+		  if (usuario_input.value.trim().length === 0) {
+			Swal.fire({
+			  title: 'Error!',
+			  text: 'Usuario Requerido',
+			  icon: 'error',
+			  showConfirmButton: false,
+			  timer: 3000
+			}).then(function () {
+			  return false;
+			});
+		  }
+		  else if (correo_input.value.trim().length === 0) {
+			Swal.fire({
+			  title: 'Error!',
+			  text: 'Correo Requerido',
+			  icon: 'error',
+			  showConfirmButton: false,
+			  timer: 3000
+			}).then(function () {
+			  return false;
+			});
+		  }
+		  else if (contrasena_input.value.trim().length === 0) {
+			Swal.fire({
+			  title: 'Error!',
+			  text: 'Contrasena Requeridas',
+			  icon: 'error',
+			  showConfirmButton: false,
+			  timer: 3000
+			}).then(function () {
+			  return false;
+			});
+		  }
+		  else {
+			Swal.fire({
+			  title: 'CORRECTO!',
+			  text: 'Usuario Registrado',
+			  icon: 'success',
+			  showConfirmButton: false,
+			  timer: 3000
+			}).then(function () {
+			  form.submit();
+			});
+		  }
+		};
+	
+	
+		form.onsubmit = onSubmitClicked;
+	  </script>
+</body>
+
+</html>
